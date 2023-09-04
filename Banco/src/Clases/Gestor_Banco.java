@@ -54,15 +54,19 @@ public class Gestor_Banco {
     public float RetornarSaldo(String Numcuenta, String pin, String tipo){
         if(tipo.equals("Corriente")){
             for (Cuenta cuenta : Cuentas_corrientes){
-                if(Numcuenta.equals(cuenta.getNumCuenta())){
+                if(Numcuenta.equals(cuenta.getNumCuenta()) && pin.equals(cuenta.getPin())){
                     return cuenta.getSaldo();
+                }else{
+                    JOptionPane.showMessageDialog(null, "   Número de cuenta ó PIN incorrecto", "Datos erróneos", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
         else if (tipo.equals("Ahorros")){
             for (Cuenta cuenta : Cuentas_ahorros){
-                if(Numcuenta.equals(cuenta.getNumCuenta())){
+                if(Numcuenta.equals(cuenta.getNumCuenta()) && pin.equals(cuenta.getPin())){
                     return cuenta.getSaldo();
+                }else{
+                    JOptionPane.showMessageDialog(null, "   Número de cuenta ó PIN incorrecto", "Datos erróneos", JOptionPane.ERROR_MESSAGE);
                 }
             }
         } 
@@ -71,18 +75,23 @@ public class Gestor_Banco {
     public boolean Consignacion(String Numcuenta, String pin, String tipo, float Cantidad){
         if(tipo.equals("Corriente")){
             for (Cuenta cuenta : Cuentas_corrientes){
-                if(Numcuenta.equals(cuenta.getNumCuenta())){
+                if(Numcuenta.equals(cuenta.getNumCuenta()) && pin.equals(cuenta.getPin())){
                     cuenta.setSaldo(cuenta.getSaldo()+Cantidad);
                     return true;
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "   Número de cuenta ó PIN incorrecto", "Datos erróneos", JOptionPane.ERROR_MESSAGE);
                 }
             }
             
         }
         else if (tipo.equals("Ahorros")){
             for (Cuenta cuenta : Cuentas_ahorros){
-                if(Numcuenta.equals(cuenta.getNumCuenta())){
+                if(Numcuenta.equals(cuenta.getNumCuenta()) && pin.equals(cuenta.getPin())){
                     cuenta.setSaldo(cuenta.getSaldo()+Cantidad);
                     return true;
+                }else{
+                    JOptionPane.showMessageDialog(null, "   Número de cuenta ó PIN incorrecto", "Datos erróneos", JOptionPane.ERROR_MESSAGE);
                 }
             }
             
@@ -112,6 +121,53 @@ public class Gestor_Banco {
         return 0;
     }
 */
+    public boolean Retirar(String Numcuenta, String pin, String tipo, float Cantidad){
+        if(tipo.equals("Corriente")){
+            for (Cuenta cuenta : Cuentas_corrientes){
+                if(Numcuenta.equals(cuenta.getNumCuenta())){
+                    if ((300000+cuenta.getSaldo()) > (-300000+Cantidad)){
+                        if (Cantidad > cuenta.getSaldo() && (300000+cuenta.getSaldo()) > Cantidad){
+                            if (cuenta.getSaldo() > 0){
+                                Cantidad = Cantidad - cuenta.getSaldo();
+                                cuenta.setSaldo(0);
+                            }
+                            if ((300000+cuenta.getSaldo()) > Cantidad){
+                                Cantidad =-300000 + (300000-Cantidad);
+                                cuenta.setSaldo(Cantidad);
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                        else if (Cantidad <= cuenta.getSaldo()){
+                            cuenta.setSaldo(cuenta.getSaldo()-Cantidad);
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+        else if (tipo.equals("Ahorros")){
+            for (Cuenta cuenta : Cuentas_ahorros){
+                if(Numcuenta.equals(cuenta.getNumCuenta())){
+                    if(Cantidad <= cuenta.getSaldo()){
+                        cuenta.setSaldo(cuenta.getSaldo()-Cantidad);
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
     
     public LinkedList<Usuario> getUsuarios_Corriente() {
         return Usuarios_Corriente;

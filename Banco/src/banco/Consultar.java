@@ -48,15 +48,9 @@ private Gestor_Banco gb1 = new Gestor_Banco();
 
         jLabel2.setText("No. Cuenta:");
 
-        jTextField1.setText("jTextField1");
-
         jLabel3.setText("PIN:");
 
-        jTextField2.setText("jTextField2");
-
         jLabel4.setText("Tipo de cuenta:");
-
-        jTextField3.setText("jTextField3");
 
         jbConsultar.setText("Consultar");
         jbConsultar.addActionListener(new java.awt.event.ActionListener() {
