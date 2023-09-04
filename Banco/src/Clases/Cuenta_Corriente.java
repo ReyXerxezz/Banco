@@ -12,7 +12,7 @@ public class Cuenta_Corriente extends Cuenta{
     private float Credito;
 
     public Cuenta_Corriente(float Credito, String Pin, float Saldo) {
-        super(Pin, Saldo);
+        super(Pin, Saldo, "");
         this.Credito = Credito;
     }
     
