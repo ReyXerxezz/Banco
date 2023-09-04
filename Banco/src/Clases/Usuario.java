@@ -22,10 +22,11 @@ public class Usuario {
         this.C = C;
     }
     
-    public void Crearcuenta(String n, float saldo){
+    public String Crearcuenta(String pin, float saldo){
         Random random = new Random();
         int numC = random.nextInt(900000000) + 100000000;
-        Cuenta c = new Cuenta(n,saldo, String.valueOf(numC));
+        Cuenta c = new Cuenta(pin,saldo, String.valueOf(numC));
+       return String.valueOf(numC);
     }
 
     /**
