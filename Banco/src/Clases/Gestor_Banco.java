@@ -12,9 +12,15 @@ import java.util.Random;
  * @author Daniel
  */
 public class Gestor_Banco {    
-    private LinkedList<Usuario>Usuarios_Corriente;
-    private LinkedList<Usuario>Usuarios_Ahorro;
+    private LinkedList<Usuario>Usuarios_Corriente = new LinkedList<>();
+    private LinkedList<Usuario>Usuarios_Ahorro = new LinkedList<>();
+    private LinkedList<Cuenta> Cuentas_corrientes = new LinkedList<>();
+    private LinkedList<Cuenta> Cuentas_ahorros = new LinkedList<>();
 
+    public Gestor_Banco() {
+    }
+
+    
     public Gestor_Banco(LinkedList<Usuario> Usuarios_Corriente, LinkedList<Usuario> Usuarios_Ahorro) {
         this.Usuarios_Corriente = Usuarios_Corriente;
         this.Usuarios_Ahorro = Usuarios_Ahorro;
@@ -39,7 +45,20 @@ public class Gestor_Banco {
             return ("Imposible de crear cuenta con dichos parametros");
         }
     }
-
+    /*
+    public float RetornarSaldo(String Numcuenta, String pin, String tipo){
+        if(tipo.equals("Corriente")){
+            for (Usuario usuario : Usuarios_Corriente) {
+                if(Numcuenta.equals(usuario.getNumeroCuenta())){
+                    return 
+                }
+            }
+  
+        }else if (tipo.equals("Ahorros")){
+            
+        }
+    }
+    */
     public LinkedList<Usuario> getUsuarios_Corriente() {
         return Usuarios_Corriente;
     }
