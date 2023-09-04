@@ -10,18 +10,14 @@ package Clases;
  */
 public class Cuenta {
     private String Pin;
-    private float Saldo;
-    private String numCuenta;
+    private float Saldo;private String numCuenta;
 
     public Cuenta(String Pin, float Saldo, String numCuenta) {
         this.Pin = Pin;
         this.Saldo = Saldo;
         this.numCuenta = numCuenta;
     }
-    
-    
-    
-    
+ 
     public float ConsultarCantidad (){
         return getSaldo();
     }
@@ -47,16 +43,11 @@ public class Cuenta {
     public void setSaldo(float Saldo) {
         this.Saldo = Saldo;
     }
-    /**
-     * @return the numCuenta
-     */
+
     public String getNumCuenta() {
         return numCuenta;
     }
 
-    /**
-     * @param numCuenta the numCuenta to set
-     */
     public void setNumCuenta(String numCuenta) {
         this.numCuenta = numCuenta;
     }

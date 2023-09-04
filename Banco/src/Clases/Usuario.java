@@ -4,6 +4,8 @@
  */
 package Clases;
 
+import java.util.Random;
+
 /**
  *
  * @author Daniel
@@ -11,24 +13,16 @@ package Clases;
 public class Usuario {
    private String Nombre;
     private String id;
-    private Cuenta C[];
+    private String NumeroCuenta;
 
     public Usuario() {
     }
 
-    public Usuario(String Nombre, String id, Cuenta[] C) {
+    public Usuario(String Nombre, String id, String NumeroCuenta) {
         this.Nombre = Nombre;
         this.id = id;
-        this.C = C;
+        this.NumeroCuenta = NumeroCuenta; 
     }
-    
-    public String Crearcuenta(String pin, float saldo){
-        Random random = new Random();
-        int numC = random.nextInt(900000000) + 100000000;
-        Cuenta c = new Cuenta(pin,saldo, String.valueOf(numC));
-       return String.valueOf(numC);
-    }
-
     /**
      * @return the Nombre
      */
@@ -57,17 +51,13 @@ public class Usuario {
         this.id = id;
     }
 
-    /**
-     * @return the C
-     */
-    public Cuenta[] getC() {
-        return C;
+    public String getNumeroCuenta() {
+        return NumeroCuenta;
     }
 
-    /**
-     * @param C the C to set
-     */
-    public void setC(Cuenta[] C) {
-        this.C = C;
-    }  
+    public void setNumeroCuenta(String NumeroCuenta) {
+        this.NumeroCuenta = NumeroCuenta;
+    }
+
+    
 }

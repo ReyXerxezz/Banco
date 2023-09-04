@@ -9,10 +9,12 @@ package Clases;
  * @author Daniel
  */
 public class Cuenta_Ahorros extends Cuenta{
-    
-    public Cuenta_Ahorros() {
+
+    public Cuenta_Ahorros(String Pin, float Saldo, String numCuenta) {
         super(null, 0, null);
     }
+
+    
 
     @Override
     public boolean ConsignarCantidad(float Cantidad) {
