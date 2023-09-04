@@ -147,7 +147,7 @@ private Gestor_Banco gb1;
     if (jTextField1.getText().equals("") || jTextField2.getText().equals("") || jTextField3.getText().equals("") || jTextField4.getText().equals("")){
         JOptionPane.showMessageDialog(this, "Datos faltantes", "Advertencia", JOptionPane.WARNING_MESSAGE);
     }else{
-        String Ncuenta = gb1.Crearcuenta(jTextField2.getText(), 30, jTextField4.getText(), jTextField1.getText(), jTextField3.getText());
+        String Ncuenta = gb1.Crearcuenta(jTextField2.getText(), 0, jTextField4.getText(), jTextField1.getText(), jTextField3.getText());
         JOptionPane.showMessageDialog(this,Ncuenta , "NUMERO DE CUENTA", JOptionPane.INFORMATION_MESSAGE);
     }
     }//GEN-LAST:event_jbCrearActionPerformed
