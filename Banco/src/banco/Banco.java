@@ -101,7 +101,7 @@ public class Banco extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jbConsultActionPerformed
 
     private void jbConsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsigActionPerformed

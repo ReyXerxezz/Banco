@@ -24,6 +24,8 @@ public class Gestor_Banco {
     public Gestor_Banco(LinkedList<Usuario> Usuarios_Corriente, LinkedList<Usuario> Usuarios_Ahorro) {
         this.Usuarios_Corriente = Usuarios_Corriente;
         this.Usuarios_Ahorro = Usuarios_Ahorro;
+        this.Cuentas_ahorros = Cuentas_ahorros;
+        this.Cuentas_corrientes = Cuentas_corrientes;
     }
     public String Crearcuenta(String pin, float saldo, String tipo_cuenta, String Nombre, String id){
         if (tipo_cuenta.equals("Corriente")){
@@ -31,6 +33,7 @@ public class Gestor_Banco {
             int numC = random.nextInt(900000000) + 100000000;
             Cuenta C = new Cuenta_Corriente(300000, pin, saldo, String.valueOf(numC));
             Usuario A = new Usuario(Nombre, id, String.valueOf(numC));
+            Cuentas_corrientes.add(C);
             Usuarios_Corriente.add(A);
             return String.valueOf(numC);
         }
@@ -39,26 +42,31 @@ public class Gestor_Banco {
             int numC = random.nextInt(900000000) + 100000000;
             Cuenta C = new Cuenta_Ahorros(pin, saldo, tipo_cuenta);
             Usuario B = new Usuario(Nombre, id, String.valueOf(numC));
+            Cuentas_ahorros.add(C);
             Usuarios_Ahorro.add(B);
             return String.valueOf(numC);
         } else {
             return ("Imposible de crear cuenta con dichos parametros");
         }
     }
-    /*
+    
     public float RetornarSaldo(String Numcuenta, String pin, String tipo){
         if(tipo.equals("Corriente")){
-            for (Usuario usuario : Usuarios_Corriente) {
-                if(Numcuenta.equals(usuario.getNumeroCuenta())){
-                    return 
+            for (Cuenta cuenta : Cuentas_corrientes){
+                if(Numcuenta.equals(cuenta.getNumCuenta())){
+                    return cuenta.getSaldo();
                 }
             }
-  
-        }else if (tipo.equals("Ahorros")){
-            
         }
+        else if (tipo.equals("Ahorros")){
+            for (Cuenta cuenta : Cuentas_ahorros){
+                if(Numcuenta.equals(cuenta.getNumCuenta())){
+                    return cuenta.getSaldo();
+                }
+            }
+        } 
+        return 34404;
     }
-    */
     public LinkedList<Usuario> getUsuarios_Corriente() {
         return Usuarios_Corriente;
     }

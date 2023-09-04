@@ -4,6 +4,8 @@
  */
 package banco;
 
+import Clases.Gestor_Banco;
+
 /**
  *
  * @author santi
@@ -13,8 +15,10 @@ public class Consultar extends javax.swing.JDialog {
     /**
      * Creates new form Consultar
      */
+    private Gestor_Banco gb1;
     public Consultar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.gb1 = gb1;
         initComponents();
     }
 
