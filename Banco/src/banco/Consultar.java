@@ -5,6 +5,7 @@
 package banco;
 
 import Clases.Gestor_Banco;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,8 +21,14 @@ private Gestor_Banco gb1 = new Gestor_Banco();
         super(parent, modal);
         this.gb1 = gb1;
         initComponents();
+        setIcons();
     }
-
+public void setIcons(){
+    ImageIcon imagen = new ImageIcon(getClass().getResource("/imagenes/aceptar.png"));
+    jbConsultar.setIcon(imagen);
+    ImageIcon imagen2 = new ImageIcon(getClass().getResource("/imagenes/cancelar.png"));
+    jbCancelar.setIcon(imagen2);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

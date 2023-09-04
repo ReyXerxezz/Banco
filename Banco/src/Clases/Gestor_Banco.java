@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class Gestor_Banco {    
     private LinkedList<Usuario>Usuarios_Corriente = new LinkedList<>();
     private LinkedList<Usuario>Usuarios_Ahorro = new LinkedList<>();
-    private LinkedList<Cuenta> Cuentas_corrientes = new LinkedList<>();
+    private LinkedList<Cuenta_Corriente> Cuentas_corrientes = new LinkedList<>();
     private LinkedList<Cuenta> Cuentas_ahorros = new LinkedList<>();
 
     public Gestor_Banco() {
@@ -32,7 +32,7 @@ public class Gestor_Banco {
         if (tipo_cuenta.equals("Corriente")){
             Random random = new Random();
             int numC = random.nextInt(900000000) + 100000000;
-            Cuenta C = new Cuenta_Corriente(300000, pin, saldo, String.valueOf(numC));
+            Cuenta_Corriente C = new Cuenta_Corriente(300000, pin, saldo, String.valueOf(numC));
             Usuario A = new Usuario(Nombre, id, String.valueOf(numC));
             Cuentas_corrientes.add(C);
             Usuarios_Corriente.add(A);
@@ -123,50 +123,57 @@ public class Gestor_Banco {
 */
     public boolean Retirar(String Numcuenta, String pin, String tipo, float Cantidad){
         if(tipo.equals("Corriente")){
-            for (Cuenta cuenta : Cuentas_corrientes){
-                if(Numcuenta.equals(cuenta.getNumCuenta())){
-                    if ((300000+cuenta.getSaldo()) > (-300000+Cantidad)){
-                        if (Cantidad > cuenta.getSaldo() && (300000+cuenta.getSaldo()) > Cantidad){
-                            if (cuenta.getSaldo() > 0){
-                                Cantidad = Cantidad - cuenta.getSaldo();
-                                cuenta.setSaldo(0);
-                            }
-                            if ((300000+cuenta.getSaldo()) > Cantidad){
-                                Cantidad =-300000 + (300000-Cantidad);
-                                cuenta.setSaldo(Cantidad);
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        }
-                        else if (Cantidad <= cuenta.getSaldo()){
+            for (Cuenta_Corriente cuenta : Cuentas_corrientes){
+                if(Numcuenta.equals(cuenta.getNumCuenta()) && pin.equals(cuenta.getPin())){
+                    if (Cantidad <= cuenta.getSaldo()){
                             cuenta.setSaldo(cuenta.getSaldo()-Cantidad);
                             return true;
-                        } else {
-                            return false;
                         }
-                    } else {
+                    if (cuenta.getSaldo() > 0){
+                        if ((cuenta.getCredito()+cuenta.getSaldo()) > (Cantidad)){
+                            cuenta.setCredito((cuenta.getCredito()+cuenta.getSaldo())-Cantidad);
+                            cuenta.setSaldo(-1*(300000-cuenta.getCredito()));
+                            JOptionPane.showMessageDialog(null, "Crédito restante: "+cuenta.getCredito(), "Crédito", JOptionPane.INFORMATION_MESSAGE);
+                        }else{
+                        JOptionPane.showMessageDialog(null, "Crédito Insuficiente", "Crédito", JOptionPane.ERROR_MESSAGE);  
                         return false;
+                        }
+                    }else{
+                      if(cuenta.getCredito()>= Cantidad){
+                        cuenta.setCredito(cuenta.getCredito()-Cantidad);
+                        cuenta.setSaldo(cuenta.getSaldo()-Cantidad);
+                        JOptionPane.showMessageDialog(null, "Crédito restante: "+cuenta.getCredito(), "Crédito", JOptionPane.INFORMATION_MESSAGE);
+                        return true;
+                      }else{
+                        JOptionPane.showMessageDialog(null, "Crédito Insuficiente", "Crédito", JOptionPane.ERROR_MESSAGE);  
+                        return false;
+                      }  
                     }
+                }else{
+                    JOptionPane.showMessageDialog(null, "   Número de cuenta ó PIN incorrecto", "Datos erróneos", JOptionPane.ERROR_MESSAGE);
                 }
             }
             return false;
         }
         else if (tipo.equals("Ahorros")){
             for (Cuenta cuenta : Cuentas_ahorros){
-                if(Numcuenta.equals(cuenta.getNumCuenta())){
+                if(Numcuenta.equals(cuenta.getNumCuenta()) && pin.equals(cuenta.getPin())){
                     if(Cantidad <= cuenta.getSaldo()){
                         cuenta.setSaldo(cuenta.getSaldo()-Cantidad);
                         return true;
                     } else {
+                        JOptionPane.showMessageDialog(null, "Saldo Insuficiente", "Saldo", JOptionPane.ERROR_MESSAGE);  
                         return false;
                     }
+                }else{
+                    JOptionPane.showMessageDialog(null, "   Número de cuenta ó PIN incorrecto", "Datos erróneos", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            return false;
         } else {
+            JOptionPane.showMessageDialog(null, "Tipo de cuenta Inexistente", "Cuenta", JOptionPane.ERROR_MESSAGE);  
             return false;
         }
+        return false;
     }
     
     public LinkedList<Usuario> getUsuarios_Corriente() {

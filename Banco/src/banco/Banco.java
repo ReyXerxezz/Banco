@@ -5,6 +5,7 @@
 package banco;
 
 import Clases.Gestor_Banco;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -17,6 +18,9 @@ public class Banco extends javax.swing.JFrame {
      */
     public Banco() {
         initComponents();
+    ImageIcon imagen = new ImageIcon(getClass().getResource("/imagenes/3635995.png"));
+    jLabel1.setIcon(imagen);
+    
     }
 
     /**
@@ -33,6 +37,7 @@ public class Banco extends javax.swing.JFrame {
         jbConsult = new javax.swing.JButton();
         jbConsig = new javax.swing.JButton();
         jbRetirar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,13 +63,22 @@ public class Banco extends javax.swing.JFrame {
         });
 
         jbRetirar.setText("Retirar");
+        jbRetirar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRetirarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/3635995.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(296, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbRetirar)
                     .addComponent(jbConsig)
@@ -75,15 +89,20 @@ public class Banco extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jbCrear)
-                .addGap(18, 18, 18)
-                .addComponent(jbConsult)
-                .addGap(18, 18, 18)
-                .addComponent(jbConsig)
-                .addGap(18, 18, 18)
-                .addComponent(jbRetirar)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jbCrear)
+                        .addGap(27, 27, 27)
+                        .addComponent(jbConsult)
+                        .addGap(33, 33, 33)
+                        .addComponent(jbConsig)
+                        .addGap(35, 35, 35)
+                        .addComponent(jbRetirar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,6 +136,12 @@ public class Banco extends javax.swing.JFrame {
         Crear jdcrear = new Crear(this, true, gestor);
         jdcrear.setVisible(true);
     }//GEN-LAST:event_jbCrearActionPerformed
+
+    private void jbRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRetirarActionPerformed
+        // TODO add your handling code here:
+        Retirar djretirar = new  Retirar(this, true, gestor);
+        djretirar.setVisible(true);
+    }//GEN-LAST:event_jbRetirarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,6 +179,7 @@ public class Banco extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbConsig;
     private javax.swing.JButton jbConsult;
