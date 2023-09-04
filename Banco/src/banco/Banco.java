@@ -101,11 +101,15 @@ public class Banco extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbConsultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultActionPerformed
+        Consultar jdconsult = new Consultar(this, true, gestor);
+        jdconsult.setVisible(true);
         
     }//GEN-LAST:event_jbConsultActionPerformed
 
     private void jbConsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsigActionPerformed
         // TODO add your handling code here:
+        Consignar jdconsig = new Consignar(this, true, gestor);
+        jdconsig.setVisible(true);
     }//GEN-LAST:event_jbConsigActionPerformed
 
     private void jbCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCrearActionPerformed

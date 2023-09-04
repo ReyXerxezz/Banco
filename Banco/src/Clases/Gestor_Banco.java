@@ -6,6 +6,7 @@ package Clases;
 
 import java.util.LinkedList;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,10 +38,10 @@ public class Gestor_Banco {
             Usuarios_Corriente.add(A);
             return String.valueOf(numC);
         }
-        else if (tipo_cuenta.equals("Ahorros")){
+        if (tipo_cuenta.equals("Ahorros")){
             Random random = new Random();
             int numC = random.nextInt(900000000) + 100000000;
-            Cuenta C = new Cuenta_Ahorros(pin, saldo, tipo_cuenta);
+            Cuenta C = new Cuenta_Ahorros(pin, saldo, String.valueOf(numC));
             Usuario B = new Usuario(Nombre, id, String.valueOf(numC));
             Cuentas_ahorros.add(C);
             Usuarios_Ahorro.add(B);
@@ -65,7 +66,7 @@ public class Gestor_Banco {
                 }
             }
         } 
-        return 34404;
+        return 404;
     }
     public boolean Consignacion(String Numcuenta, String pin, String tipo, float Cantidad){
         if(tipo.equals("Corriente")){
@@ -75,7 +76,7 @@ public class Gestor_Banco {
                     return true;
                 }
             }
-            return false;
+            
         }
         else if (tipo.equals("Ahorros")){
             for (Cuenta cuenta : Cuentas_ahorros){
@@ -84,59 +85,34 @@ public class Gestor_Banco {
                     return true;
                 }
             }
+            
+        } 
             return false;
-        } else {
-            return false;
-        }
+        
     }
-    
-    public boolean Retirar(String Numcuenta, String pin, String tipo, float Cantidad){
+    /*public float Consignar(String Numcuenta, String pin, String tipo, float cantidad){
         if(tipo.equals("Corriente")){
             for (Cuenta cuenta : Cuentas_corrientes){
                 if(Numcuenta.equals(cuenta.getNumCuenta())){
-                    if ((300000+cuenta.getSaldo()) > (-300000+Cantidad)){
-                        if (Cantidad > cuenta.getSaldo() && (300000+cuenta.getSaldo()) > Cantidad){
-                            if (cuenta.getSaldo() > 0){
-                                Cantidad = Cantidad - cuenta.getSaldo();
-                                cuenta.setSaldo(0);
-                            }
-                            if ((300000+cuenta.getSaldo()) > Cantidad){
-                                Cantidad =-300000 + (300000-Cantidad);
-                                cuenta.setSaldo(Cantidad);
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        }
-                        else if (Cantidad <= cuenta.getSaldo()){
-                            cuenta.setSaldo(cuenta.getSaldo()-Cantidad);
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    } else {
-                        return false;
-                    }
+                    cuenta.setSaldo(cuenta.getSaldo()+cantidad);
+                    JOptionPane.showMessageDialog(null, "Consignación exitosa", "CONSIGNACIÓN", JOptionPane.DEFAULT_OPTION);
+                    return cuenta.getSaldo();
                 }
             }
-            return false;
         }
-        else if (tipo.equals("Ahorros")){
+        if (tipo.equals("Ahorros")){
             for (Cuenta cuenta : Cuentas_ahorros){
                 if(Numcuenta.equals(cuenta.getNumCuenta())){
-                    if(Cantidad <= cuenta.getSaldo()){
-                        cuenta.setSaldo(cuenta.getSaldo()-Cantidad);
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    cuenta.setSaldo(cuenta.getSaldo()+cantidad);
+                    JOptionPane.showMessageDialog(null, "Consignación exitosa", "CONSIGNACIÓN", JOptionPane.DEFAULT_OPTION);
+                    return cuenta.getSaldo();
                 }
             }
-            return false;
-        } else {
-            return false;
-        }
+        } 
+        return 0;
     }
+*/
+    
     public LinkedList<Usuario> getUsuarios_Corriente() {
         return Usuarios_Corriente;
     }

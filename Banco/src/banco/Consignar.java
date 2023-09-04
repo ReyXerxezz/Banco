@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author santi
  */
-public class Consultar extends javax.swing.JDialog {
-private Gestor_Banco gb1 = new Gestor_Banco();
+public class Consignar extends javax.swing.JDialog {
+private Gestor_Banco gb1;
     /**
-     * Creates new form Consultar
+     * Creates new form Consignar
      */
-    public Consultar(java.awt.Frame parent, boolean modal, Gestor_Banco gb1) {
+    public Consignar(java.awt.Frame parent, boolean modal, Gestor_Banco gb1) {
         super(parent, modal);
         this.gb1 = gb1;
         initComponents();
@@ -39,29 +39,25 @@ private Gestor_Banco gb1 = new Gestor_Banco();
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jbConsultar = new javax.swing.JButton();
+        jbConsignar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Consultar saldo");
+        jLabel1.setText("Consignar");
 
         jLabel2.setText("No. Cuenta:");
 
-        jTextField1.setText("jTextField1");
-
         jLabel3.setText("PIN:");
 
-        jTextField2.setText("jTextField2");
+        jLabel4.setText("Cantidad a consignar:");
 
-        jLabel4.setText("Tipo de cuenta:");
-
-        jTextField3.setText("jTextField3");
-
-        jbConsultar.setText("Consultar");
-        jbConsultar.addActionListener(new java.awt.event.ActionListener() {
+        jbConsignar.setText("Consignar");
+        jbConsignar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConsultarActionPerformed(evt);
+                jbConsignarActionPerformed(evt);
             }
         });
 
@@ -72,6 +68,8 @@ private Gestor_Banco gb1 = new Gestor_Banco();
             }
         });
 
+        jLabel5.setText("Tipo de cuenta:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -79,53 +77,63 @@ private Gestor_Banco gb1 = new Gestor_Banco();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
+                        .addGap(164, 164, 164)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(74, 74, 74)
-                            .addComponent(jbConsultar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                            .addComponent(jbCancelar))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGap(45, 45, 45)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-                                        .addComponent(jTextField2)))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))))))
-                .addContainerGap(99, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField1)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jbConsignar)
+                                    .addComponent(jLabel4))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField3))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(81, 81, 81)
+                                        .addComponent(jbCancelar)
+                                        .addGap(0, 39, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField4)))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(24, 24, 24)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbConsultar)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbConsignar)
                     .addComponent(jbCancelar))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,15 +150,21 @@ private Gestor_Banco gb1 = new Gestor_Banco();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultarActionPerformed
+    private void jbConsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsignarActionPerformed
         // TODO add your handling code here:
-        if (jTextField1.getText().equals("") || jTextField2.getText().equals("") || jTextField3.getText().equals("")){
+        if (jTextField1.getText().equals("") || jTextField2.getText().equals("") || jTextField3.getText().equals("") || jTextField4.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Datos faltantes", "Advertencia", JOptionPane.WARNING_MESSAGE);
        }else{
-        float saldocuenta = gb1.RetornarSaldo(jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
-        JOptionPane.showMessageDialog(this, saldocuenta, "SALDO", JOptionPane.INFORMATION_MESSAGE);
+        /*float nuevosaldo = gb1.Consignar(jTextField1.getText(), jTextField2.getText(), jTextField4.getText(), Float.parseFloat(jTextField3.getText()));
+        JOptionPane.showMessageDialog(this, nuevosaldo, "SALDO", JOptionPane.INFORMATION_MESSAGE);
+        */
+        if(gb1.Consignacion(jTextField1.getText(), jTextField2.getText(), jTextField4.getText(), Float.parseFloat(jTextField3.getText()))){
+        JOptionPane.showMessageDialog(this, "Consignación exitosa", "Consignacion", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+        JOptionPane.showMessageDialog(this, "Consignación Fallida", "Consignacion", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_jbConsultarActionPerformed
+        }
+    }//GEN-LAST:event_jbConsignarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         // TODO add your handling code here:
@@ -160,18 +174,20 @@ private Gestor_Banco gb1 = new Gestor_Banco();
     /**
      * @param args the command line arguments
      */
-  
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbConsultar;
+    private javax.swing.JButton jbConsignar;
     // End of variables declaration//GEN-END:variables
 }

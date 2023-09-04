@@ -15,6 +15,11 @@ public class Cuenta_Corriente extends Cuenta{
         super(Pin, Saldo, numCuenta);
         this.Credito = Credito;
     }
+
+    
+    
+    
+    
     public float getCredito() {
         return Credito;
     }

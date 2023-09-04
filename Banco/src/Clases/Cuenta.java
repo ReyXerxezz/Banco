@@ -10,16 +10,25 @@ package Clases;
  */
 public class Cuenta {
     private String Pin;
-    private float Saldo;private String numCuenta;
+    private float Saldo;
+    private String numCuenta;
 
     public Cuenta(String Pin, float Saldo, String numCuenta) {
         this.Pin = Pin;
         this.Saldo = Saldo;
         this.numCuenta = numCuenta;
     }
+ 
+    public float ConsultarCantidad (){
+        return getSaldo();
+    }
     public boolean RetirarCantidad (float Cantidad){
         return false;
     }
+    public boolean ConsignarCantidad (float Cantidad){
+        return false;
+    }
+
     public String getPin() {
         return Pin;
     }
