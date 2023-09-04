@@ -11,10 +11,12 @@ package Clases;
 public class Cuenta_Corriente extends Cuenta{
     private float Credito;
 
-    public Cuenta_Corriente(float Credito, String Pin, float Saldo) {
-        super(Pin, Saldo, "");
+    public Cuenta_Corriente(float Credito, String Pin, float Saldo, String numCuenta) {
+        super(Pin, Saldo, numCuenta);
         this.Credito = Credito;
     }
+
+    
     
     @Override
     public boolean ConsignarCantidad(float Cantidad) {
