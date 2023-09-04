@@ -17,17 +17,9 @@ public class Cuenta {
         this.Saldo = Saldo;
         this.numCuenta = numCuenta;
     }
- 
-    public float ConsultarCantidad (){
-        return getSaldo();
-    }
     public boolean RetirarCantidad (float Cantidad){
         return false;
     }
-    public boolean ConsignarCantidad (float Cantidad){
-        return false;
-    }
-
     public String getPin() {
         return Pin;
     }
