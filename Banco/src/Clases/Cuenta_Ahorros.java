@@ -11,7 +11,7 @@ package Clases;
 public class Cuenta_Ahorros extends Cuenta{
     
     public Cuenta_Ahorros() {
-        super(null, 0);
+        super(null, 0, null);
     }
 
     @Override
