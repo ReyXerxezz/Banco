@@ -71,6 +71,29 @@ public class Gestor_Banco {
         if(tipo.equals("Corriente")){
             for (Cuenta cuenta : Cuentas_corrientes){
                 if(Numcuenta.equals(cuenta.getNumCuenta())){
+                    cuenta.setSaldo(cuenta.getSaldo()+Cantidad);
+                    return true;
+                }
+            }
+            return false;
+        }
+        else if (tipo.equals("Ahorros")){
+            for (Cuenta cuenta : Cuentas_ahorros){
+                if(Numcuenta.equals(cuenta.getNumCuenta())){
+                    cuenta.setSaldo(cuenta.getSaldo()+Cantidad);
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean Retirar(String Numcuenta, String pin, String tipo, float Cantidad){
+        if(tipo.equals("Corriente")){
+            for (Cuenta cuenta : Cuentas_corrientes){
+                if(Numcuenta.equals(cuenta.getNumCuenta())){
                     if ((300000+cuenta.getSaldo()) > (-300000+Cantidad)){
                         if (Cantidad > cuenta.getSaldo() && (300000+cuenta.getSaldo()) > Cantidad){
                             if (cuenta.getSaldo() > 0){
@@ -109,14 +132,10 @@ public class Gestor_Banco {
                     }
                 }
             }
-        return false;
+            return false;
         } else {
             return false;
         }
-    }
-    
-    public boolean Retirar(String Numcuenta, String pin, String tipo, float Cantidad){
-        return false;
     }
     public LinkedList<Usuario> getUsuarios_Corriente() {
         return Usuarios_Corriente;
